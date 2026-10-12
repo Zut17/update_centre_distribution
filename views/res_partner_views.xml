@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_partner_form_inherit_operating_unit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.operating.unit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="zy_extended_partner_zone.view_partner_form_zone"/>
+        <field name="arch" type="xml">
+            <!-- Champ original : visible seulement SANS le droit -->
+            <xpath expr="//field[@name='operating_unit_id']" position="attributes">
+                <attribute name="required">1</attribute>
+                <attribute name="groups">!update_centre_distribution.group_multi_operating_unit</attribute>
+            </xpath>
+
+            <!-- Nouveau champ multiple : visible seulement AVEC le droit -->
+            <xpath expr="//field[@name='operating_unit_id']" position="after">
+                <field name="operating_unit_ids"
+                       widget="many2many_tags"
+                       required="1"
+                       groups="update_centre_distribution.group_multi_operating_unit"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

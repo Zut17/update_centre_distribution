@@ -1,0 +1,6 @@
+<odoo>
+    <record id="group_multi_operating_unit" model="res.groups">
+        <field name="name">Autoriser plusieurs centres de distribution</field>
+        <field name="category_id" ref="base.module_category_sales_sales"/>
+    </record>
+</odoo>
